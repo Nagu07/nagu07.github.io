@@ -1,20 +1,130 @@
 <!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Perfect car predictor</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.8.0/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script>
+       var cars = [ 
+      {
+        "name": "Maruthi",
+        "Amount": 8,
+      },
+      {
+        "name": "Skoda & VW",
+        "Amount": 15,
+      },
+      {
+        "name": "Audi / BMW",
+        "Amount": 25,
+      },
+      {
+        "name": "Lambhorgini",
+        "Amount": 100,
+      },
+      {
+        "name": "Porsche",
+        "Amount": 90,
+      },
+      {
+        "name": "Benz",
+        "Amount": 35,
+      },
+      {
+        "name": "Volvo",
+        "Amount": 30,
+      }];
+     function getCar()
+      {
+        // Do something and give user a car name
+        var incomeVal = parseInt(document.getElementById("incomeId").value);
+        var parkingVal = document.getElementById("ParkingSpaceId").value;
+        var ageVal = parseInt(document.getElementById("AgeId").value);        
+        let carname;
+        let carvalue;
+        let result;
+        
+        
+        for (i = 0; i < cars.length; i++) 
+        {
+           carname=cars[i].name;
+           carvalue = cars[i].Amount;
+           if(incomeVal > carvalue)
+           {
+           //window.alert(incomeVal);
+           //window.alert(carvalue);
+           //window.alert(result);
+           result = carname;
+           }
+        }
+        if(ageVal<18)
+        {
+          result = 'You are too young so just wait till ur 18! :P';
+        }
 
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
-<head>
-    <meta charset="utf-8" />
-    <title></title>
-	<link href="https://fonts.googleapis.com/css?family=Reenie+Beanie&display=swap" rel="stylesheet">
-	<link href="https://fonts.googleapis.com/css?family=Bebas+Neue&display=swap" rel="stylesheet">
-</head>
-<body>
-    <DIV style="border-style: ridge;text-align:center;position: absolute;
-    top: 10px; right: 10px; bottom: 10px; left: 10px;padding-left:30%;padding-right:30%;padding-top:10%;padding-bottom:10%">
-        <h1 style="border-style: ridge; max-width:300px;font-size:2vw;">
-            &lt;/ Hello World! &gt;
+        document.getElementById("bodyId").innerHTML="";
+
+        document.getElementById("bodyId").innerHTML = '<p class="subtitle has-text-centered"> You can opt for </p> <p class="title has-text-centered">' +result+'</p>';
+
+        //window.alert(document.getElementById("ParkingSpaceId").value);
+      }
+      function clearAll()
+      {
+        //Clear all entered values
+         document.getElementById("incomeId").value = '';
+         document.getElementById("monthlyId").value = '';
+         document.getElementById("ParkingSpaceId").value = '';
+         document.getElementById("AgeId").value = '';   
+      }
+    </script>
+  </head>
+  <body>
+  <section class="hero is-primary is-fullheight">
+    <div class="hero-body">
+      <div class="container">
+        <h1 class="title has-text-centered">
+          Perfect car predictor app
         </h1>
-		<p style="font-family: 'Reenie Beanie', cursive;font-size:2vw;max-width:600px;"> This is <a href="https://in.linkedin.com/in/nagarajan-padmanabhan-a96232b2">Nagarajan</a> , Software engineer from India. I am passionate learner and love to play with computer system and languages.</p>
-		<h4 style="font-family: 'Bebas Neue', cursive;font-size:2vw;"><a href="https://in.linkedin.com/in/nagarajan-padmanabhan-a96232b2">LinkedIn</a>| <a href="https://github.com/Nagu07">Github</a> | <a href="https://leetcode.com/naga00798/">LeetCode</a></h4>
-    </DIV>
-</body>
+        <div id = "bodyId">
+        <p class="subtitle has-text-centered">
+          Please answer the below questions to get you a perfect mactching car!
+        </p>
+      <div class="field">
+      <p>What is your monthly income? (in terms of LPA)</p>
+      <div class="control">
+        <input class="input" id="incomeId" type="text" placeholder="Amount of money" >
+      </div>
+    </div>
+      <div class="field">
+      <p>Do you have a parking space?</p>
+      <div class="control">
+        <div class="select">
+          <select id="ParkingSpaceId">
+            <option>Select dropdown</option>
+            <option>Yes</option>
+            <option>No</option>
+          </select>
+        </div>
+      </div>
+    </div>
+      <div class="field">
+      <p>What is your age?</p>
+      <div class="control">
+        <input class="input"id="AgeId" type="text" placeholder="Your Age">
+      </div>
+    </div>
+      <div class="field is-grouped is-grouped-centered">
+      <p class="control">
+        <button class="button" onclick="getCar()">Submit</button>
+        </p>
+        <p class="control">
+        <button class="button" onclick="clearAll()">Clear</button>
+        </p>
+      </div>
+    </div>
+    </div>
+</section>
+  </body>
 </html>
